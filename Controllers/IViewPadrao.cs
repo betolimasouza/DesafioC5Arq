@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DesafioC5Arq.ClassePadrao;
 
 namespace DesafioC5Arq.Controllers
 {
@@ -12,6 +13,9 @@ namespace DesafioC5Arq.Controllers
     {
         void SetController(IControllerPadrao controller);
 
-        void SetDataBinding(IBindingList list);
+        void ShowView(IBindingList mensagens, TipoProcesso tipoProcesso);
+
+        void SetDataBinding(IBindingList mensagens);
+
     }
 }

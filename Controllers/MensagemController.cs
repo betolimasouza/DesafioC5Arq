@@ -2,57 +2,88 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DesafioC5Arq.Models;
+using DesafioC5Arq.Views;
+using static DesafioC5Arq.ClassePadrao;
 
 namespace DesafioC5Arq.Controllers
 {
-    public class MensagemListController : IControllerPadrao
+    public class MensagemController : IControllerPadrao
     {
-        IViewPadrao _view;
+        
         BindingList<Mensagem> _mensagens;
         Mensagem _msgSelecionada;
 
-
-        public MensagemListController(IViewPadrao view, BindingList<Mensagem> msgs)
+        public MensagemController()
         {
-            _view = view;
+            BindingList<Mensagem> msgs = new DataAccess().Conectar(100);
             _mensagens = msgs;
-            view.SetController(this);
         }
 
-        public void LoadView()
+        #region Load
+
+        public void LoadView(IViewPadrao view, TipoProcesso tipoProcesso)
         {
-            _view.SetDataBinding(_mensagens);
+            view.SetController(this);
+            view.ShowView(_mensagens, tipoProcesso);
         }
+
+        public void LoadLista()
+        {
+            var lista = new MensagemLista();
+            LoadView(lista, TipoProcesso.Listagem);
+        }
+
+        public void LoadForm(TipoProcesso tipoProcesso)
+        {
+            var form = new MensagemForm();
+            LoadView(form, tipoProcesso);
+        }
+
+        public void RefreshView(IViewPadrao view)
+        {
+            view.SetDataBinding(_mensagens);
+        }
+
+        #endregion
+
+        #region Processos
+
+        #region Mensagem Selecionada na Listagem
 
         public void SelecionaMensagem(Mensagem selMsg)
         {
             _msgSelecionada = selMsg;
         }
 
-        public void NovaMensagem(Mensagem newMsg)
+        public int IndexMsgSelecionada()
         {
-            
+            return _mensagens.IndexOf(_msgSelecionada);
         }
 
-        private void AbreMensagemForm(Mensagem msg)
+        #endregion
+
+        #region Insert
+        public void NovaMensagem()
         {
-            
+            LoadForm(TipoProcesso.Inserir);
         }
 
-        public void InsereItensTeste()
+        internal void InserirMensagem(Mensagem msg)
         {
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
-            _mensagens.Add(new Mensagem() { CodAplicacao = "001", DataInicial = DateTime.Now, DataFinal = DateTime.Now.AddDays(30), DataInclusao = DateTime.Now, StatusMSG = Mensagem.TipoStatus.Ativo, TextoMensagem = "TST", UsuarioInclusao = Environment.UserName });
+            _mensagens.Add(msg);
+        }
+
+        #endregion
+
+        public void EditarMensagem()
+        {
+            LoadForm(TipoProcesso.Editar);
         }
 
         internal void ExcluiMensagem()
@@ -65,5 +96,23 @@ namespace DesafioC5Arq.Controllers
                 _mensagens.Remove(_msgSelecionada);
             }
         }
+
+        internal bool ValidaMensagem(Mensagem msg)
+        {
+
+            return true;
+
+            //var erros = msg.Validate(new ValidationContext(msg));
+            //if (erros.Any())
+            //{
+            //    MessageBox.Show(string.Join("\n", erros.Select(a => a.ErrorMessage)));
+            //    return false;
+            //}
+
+            //return true;
+        }
+
+        #endregion
+
     }
 }

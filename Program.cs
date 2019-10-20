@@ -21,25 +21,12 @@ namespace DesafioC5Arq
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new MensagemLista());
-
-            MensagemLista view = new MensagemLista();
-            view.Visible = false;
-
-            //Inicia coleção vazia
-            //BindingList para o DataGridView enxergar as mudanças na coleção (INotifyPropertyChanged)
-            BindingList<Mensagem> msgs = new BindingList<Mensagem>();
-
+          
             //Inicia o controller
-            MensagemListController controller = new MensagemListController(view, msgs);
+            MensagemController controller = new MensagemController();
 
-            //Dados de teste
-            controller.InsereItensTeste();
-            
-            controller.LoadView();
-            view.ShowDialog();
-
-
+            //Inicia listagem
+            controller.LoadLista();
         }
     }
 }

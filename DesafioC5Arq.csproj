@@ -47,9 +47,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassePadrao.cs" />
     <Compile Include="Controllers\IControllerPadrao.cs" />
     <Compile Include="Controllers\IViewPadrao.cs" />
     <Compile Include="Controllers\MensagemController.cs" />
+    <Compile Include="Models\DataAccess.cs" />
     <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,7 +82,6 @@
     <EmbeddedResource Include="Views\MensagemLista.resx">
       <DependentUpon>MensagemLista.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

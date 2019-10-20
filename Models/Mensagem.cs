@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DesafioC5Arq.Models
 {
-    public class Mensagem : IValidatableObject
+    public class Mensagem //: IValidatableObject
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Preencha o código da aplicação!")]
         [DisplayName("Cod Aplicação")]
@@ -29,8 +29,6 @@ namespace DesafioC5Arq.Models
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime DataFinal { get; set; }
 
-        [DisplayName("Status")]
-        public TipoStatus StatusMSG { get; set; }
 
         [DisplayName("Usuario Inclusão")]
         public string UsuarioInclusao { get; set; }
@@ -38,43 +36,49 @@ namespace DesafioC5Arq.Models
         [DisplayName("Data Inclusão")]
         public DateTime DataInclusao { get; set; }
 
+        [DisplayName("Status")]
+        public bool Status { get; set; }
 
-        public enum TipoStatus
-        {
-            Inativo = 0,
-            Ativo = 1
-        }
 
         public Mensagem()
         {
 
         }
 
-        public Mensagem NovaMensagem(string codAplicacao, string textoMensagem, DateTime dataInicial, DateTime dataFinal, TipoStatus statusMSG)
+        public Mensagem NovaMensagem(string codAplicacao, string textoMensagem, DateTime dataInicial, DateTime dataFinal, bool status)
         {
-            var msg = new Mensagem()
-            {
-                CodAplicacao = codAplicacao,
-                TextoMensagem = textoMensagem,
-                DataInicial = dataInicial,
-                DataFinal = dataFinal,
-                StatusMSG = statusMSG,
-                UsuarioInclusao = Environment.UserName,
-                DataInclusao = DateTime.Now
-            };
-
-            return msg;
+            CodAplicacao = codAplicacao;
+            TextoMensagem = textoMensagem;
+            DataInicial = dataInicial;
+            DataFinal = dataFinal;
+            Status = status;
+            UsuarioInclusao = Environment.UserName;
+            DataInclusao = DateTime.Now;
+            return this;
         }
+
+
+        public Mensagem NovaMensagem()
+        {
+            DataInicial = DateTime.Now;
+            DataFinal = DateTime.Now;
+            UsuarioInclusao = Environment.UserName;
+            DataInclusao = DateTime.Now;
+            return this;
+        }
+
+        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        //{
+        //    var results = new List<ValidationResult>();
+
+        //    if (DataInicial < DateTime.Today) results.Add(new ValidationResult("Data inicial não pode ser anterior a data atual!"));
+        //    if (DataFinal < DataInicial) results.Add(new ValidationResult("Data final não pode ser anterior a data inicial!"));
+
+        //    Validator.TryValidateObject(this, validationContext, results, true);
+
+        //    return results;
+        //}
+
         
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            var results = new List<ValidationResult>();
-
-            if (DataInicial < DateTime.Today) results.Add(new ValidationResult("Data inicial não pode ser anterior a data atual!"));
-            if (DataFinal < DataInicial) results.Add(new ValidationResult("Data final não pode ser anterior a data inicial!"));
-            
-            Validator.TryValidateObject(this, validationContext, results);
-            return results;
-        }
     }
 }

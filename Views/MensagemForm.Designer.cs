@@ -28,55 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MensagemForm));
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbSalvarMensagem = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
             this.lblCodAplicacao = new System.Windows.Forms.Label();
             this.txtCodAplicacao = new System.Windows.Forms.TextBox();
             this.lblTextoMsg = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTextoMensagem = new System.Windows.Forms.TextBox();
             this.lblDataInicial = new System.Windows.Forms.Label();
             this.dtpDataInicial = new System.Windows.Forms.DateTimePicker();
             this.dtpDataFinal = new System.Windows.Forms.DateTimePicker();
             this.lblDataFinal = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.chbStatus = new System.Windows.Forms.CheckBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpDataInclusao = new System.Windows.Forms.DateTimePicker();
             this.lblDataIncl = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsuarioInclusao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.toolStrip1.SuspendLayout();
+            this.bsForm = new System.Windows.Forms.BindingSource(this.components);
+            this.bnForm = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
+            this.tsbSalvarMensagem = new System.Windows.Forms.ToolStripButton();
+            ((System.ComponentModel.ISupportInitialize)(this.bsForm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bnForm)).BeginInit();
+            this.bnForm.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbSalvarMensagem,
-            this.tsbCancelar});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(285, 25);
-            this.toolStrip1.TabIndex = 0;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // tsbSalvarMensagem
-            // 
-            this.tsbSalvarMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSalvarMensagem.Image = ((System.Drawing.Image)(resources.GetObject("tsbSalvarMensagem.Image")));
-            this.tsbSalvarMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalvarMensagem.Name = "tsbSalvarMensagem";
-            this.tsbSalvarMensagem.Size = new System.Drawing.Size(42, 22);
-            this.tsbSalvarMensagem.Text = "Salvar";
-            // 
-            // tsbCancelar
-            // 
-            this.tsbCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbCancelar.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancelar.Image")));
-            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(57, 22);
-            this.tsbCancelar.Text = "Cancelar";
             // 
             // lblCodAplicacao
             // 
@@ -104,14 +88,14 @@
             this.lblTextoMsg.Text = "Texto";
             this.lblTextoMsg.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox1
+            // txtTextoMensagem
             // 
-            this.textBox1.Location = new System.Drawing.Point(85, 70);
-            this.textBox1.MaxLength = 4000;
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(181, 169);
-            this.textBox1.TabIndex = 4;
+            this.txtTextoMensagem.Location = new System.Drawing.Point(85, 70);
+            this.txtTextoMensagem.MaxLength = 4000;
+            this.txtTextoMensagem.Multiline = true;
+            this.txtTextoMensagem.Name = "txtTextoMensagem";
+            this.txtTextoMensagem.Size = new System.Drawing.Size(181, 169);
+            this.txtTextoMensagem.TabIndex = 4;
             // 
             // lblDataInicial
             // 
@@ -133,6 +117,7 @@
             // 
             // dtpDataFinal
             // 
+            this.dtpDataFinal.Checked = false;
             this.dtpDataFinal.CustomFormat = "{0:d}";
             this.dtpDataFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpDataFinal.Location = new System.Drawing.Point(85, 275);
@@ -167,15 +152,15 @@
             this.chbStatus.TabIndex = 10;
             this.chbStatus.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // dtpDataInclusao
             // 
-            this.dateTimePicker1.CustomFormat = "{0:d}";
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(85, 321);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(95, 20);
-            this.dateTimePicker1.TabIndex = 12;
+            this.dtpDataInclusao.CustomFormat = "{0:d}";
+            this.dtpDataInclusao.Enabled = false;
+            this.dtpDataInclusao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpDataInclusao.Location = new System.Drawing.Point(85, 321);
+            this.dtpDataInclusao.Name = "dtpDataInclusao";
+            this.dtpDataInclusao.Size = new System.Drawing.Size(95, 20);
+            this.dtpDataInclusao.TabIndex = 12;
             // 
             // lblDataIncl
             // 
@@ -186,14 +171,14 @@
             this.lblDataIncl.Text = "Data Inclusão";
             this.lblDataIncl.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox2
+            // txtUsuarioInclusao
             // 
-            this.textBox2.Enabled = false;
-            this.textBox2.Location = new System.Drawing.Point(85, 347);
-            this.textBox2.MaxLength = 12;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(181, 20);
-            this.textBox2.TabIndex = 14;
+            this.txtUsuarioInclusao.Enabled = false;
+            this.txtUsuarioInclusao.Location = new System.Drawing.Point(85, 347);
+            this.txtUsuarioInclusao.MaxLength = 12;
+            this.txtUsuarioInclusao.Name = "txtUsuarioInclusao";
+            this.txtUsuarioInclusao.Size = new System.Drawing.Size(181, 20);
+            this.txtUsuarioInclusao.TabIndex = 14;
             // 
             // label2
             // 
@@ -204,14 +189,131 @@
             this.label2.Text = "Usuário";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // bnForm
+            // 
+            this.bnForm.AddNewItem = null;
+            this.bnForm.CountItem = this.bindingNavigatorCountItem;
+            this.bnForm.DeleteItem = null;
+            this.bnForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbSalvarMensagem,
+            this.tsbCancelar,
+            this.bindingNavigatorMoveFirstItem,
+            this.bindingNavigatorMovePreviousItem,
+            this.bindingNavigatorSeparator,
+            this.bindingNavigatorPositionItem,
+            this.bindingNavigatorCountItem,
+            this.bindingNavigatorSeparator1,
+            this.bindingNavigatorMoveNextItem,
+            this.bindingNavigatorMoveLastItem,
+            this.bindingNavigatorSeparator2});
+            this.bnForm.Location = new System.Drawing.Point(0, 0);
+            this.bnForm.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
+            this.bnForm.MoveLastItem = this.bindingNavigatorMoveLastItem;
+            this.bnForm.MoveNextItem = this.bindingNavigatorMoveNextItem;
+            this.bnForm.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
+            this.bnForm.Name = "bnForm";
+            this.bnForm.PositionItem = this.bindingNavigatorPositionItem;
+            this.bnForm.Size = new System.Drawing.Size(362, 25);
+            this.bnForm.TabIndex = 15;
+            this.bnForm.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorMoveFirstItem
+            // 
+            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
+            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
+            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            // 
+            // bindingNavigatorMovePreviousItem
+            // 
+            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
+            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
+            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            // 
+            // bindingNavigatorSeparator
+            // 
+            this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorPositionItem
+            // 
+            this.bindingNavigatorPositionItem.AccessibleName = "Position";
+            this.bindingNavigatorPositionItem.AutoSize = false;
+            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
+            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
+            this.bindingNavigatorPositionItem.Text = "0";
+            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // bindingNavigatorSeparator1
+            // 
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // bindingNavigatorMoveNextItem
+            // 
+            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
+            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
+            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveNextItem.Text = "Move next";
+            // 
+            // bindingNavigatorMoveLastItem
+            // 
+            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
+            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
+            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
+            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
+            this.bindingNavigatorMoveLastItem.Text = "Move last";
+            // 
+            // bindingNavigatorSeparator2
+            // 
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbCancelar
+            // 
+            this.tsbCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbCancelar.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancelar.Image")));
+            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelar.Name = "tsbCancelar";
+            this.tsbCancelar.Size = new System.Drawing.Size(57, 22);
+            this.tsbCancelar.Text = "Cancelar";
+            this.tsbCancelar.Click += new System.EventHandler(this.TsbCancelar_Click);
+            // 
+            // tsbSalvarMensagem
+            // 
+            this.tsbSalvarMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSalvarMensagem.Image = ((System.Drawing.Image)(resources.GetObject("tsbSalvarMensagem.Image")));
+            this.tsbSalvarMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalvarMensagem.Name = "tsbSalvarMensagem";
+            this.tsbSalvarMensagem.Size = new System.Drawing.Size(42, 22);
+            this.tsbSalvarMensagem.Text = "Salvar";
+            this.tsbSalvarMensagem.Click += new System.EventHandler(this.TsbSalvarMensagem_Click);
+            // 
             // MensagemForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(285, 383);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(362, 383);
+            this.Controls.Add(this.bnForm);
+            this.Controls.Add(this.txtUsuarioInclusao);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpDataInclusao);
             this.Controls.Add(this.lblDataIncl);
             this.Controls.Add(this.chbStatus);
             this.Controls.Add(this.lblStatus);
@@ -219,39 +321,49 @@
             this.Controls.Add(this.lblDataFinal);
             this.Controls.Add(this.dtpDataInicial);
             this.Controls.Add(this.lblDataInicial);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTextoMensagem);
             this.Controls.Add(this.lblTextoMsg);
             this.Controls.Add(this.txtCodAplicacao);
             this.Controls.Add(this.lblCodAplicacao);
-            this.Controls.Add(this.toolStrip1);
             this.Name = "MensagemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mensagem";
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsForm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bnForm)).EndInit();
+            this.bnForm.ResumeLayout(false);
+            this.bnForm.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbSalvarMensagem;
-        private System.Windows.Forms.ToolStripButton tsbCancelar;
         private System.Windows.Forms.Label lblCodAplicacao;
         private System.Windows.Forms.TextBox txtCodAplicacao;
         private System.Windows.Forms.Label lblTextoMsg;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTextoMensagem;
         private System.Windows.Forms.Label lblDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataInicial;
         private System.Windows.Forms.DateTimePicker dtpDataFinal;
         private System.Windows.Forms.Label lblDataFinal;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.CheckBox chbStatus;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpDataInclusao;
         private System.Windows.Forms.Label lblDataIncl;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsuarioInclusao;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.BindingSource bsForm;
+        private System.Windows.Forms.BindingNavigator bnForm;
+        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
+        private System.Windows.Forms.ToolStripButton tsbSalvarMensagem;
+        private System.Windows.Forms.ToolStripButton tsbCancelar;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
+        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
     }
 }

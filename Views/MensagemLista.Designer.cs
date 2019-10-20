@@ -33,24 +33,24 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.dgvMensagens = new System.Windows.Forms.DataGridView();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.tsbNovaMensagem = new System.Windows.Forms.ToolStripButton();
-            this.tsbExcluiMensagem = new System.Windows.Forms.ToolStripButton();
             this.bNavigator = new System.Windows.Forms.BindingNavigator(this.components);
-            this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
+            this.TsbNovaMensagem = new System.Windows.Forms.ToolStripButton();
+            this.TspEditarMensagem = new System.Windows.Forms.ToolStripButton();
+            this.tsbExcluiMensagem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.bindingNavigatorAddNewItem = new System.Windows.Forms.ToolStripButton();
-            this.bindingNavigatorDeleteItem = new System.Windows.Forms.ToolStripButton();
+            this.tsbPrimeiraPagina = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbPaginaAnterior = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tstPaginaAtual = new System.Windows.Forms.ToolStripTextBox();
+            this.tslPaginaTotal = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbProximaPagina = new System.Windows.Forms.ToolStripButton();
+            this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbUltimaPagina = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMensagens)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bNavigator)).BeginInit();
             this.bNavigator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bSource)).BeginInit();
@@ -72,36 +72,71 @@
             // 
             this.dgvMensagens.AllowUserToAddRows = false;
             this.dgvMensagens.AllowUserToDeleteRows = false;
+            this.dgvMensagens.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvMensagens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMensagens.Location = new System.Drawing.Point(0, 53);
+            this.dgvMensagens.Location = new System.Drawing.Point(0, 28);
             this.dgvMensagens.MultiSelect = false;
             this.dgvMensagens.Name = "dgvMensagens";
             this.dgvMensagens.ReadOnly = true;
             this.dgvMensagens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMensagens.Size = new System.Drawing.Size(800, 385);
+            this.dgvMensagens.Size = new System.Drawing.Size(800, 420);
             this.dgvMensagens.TabIndex = 0;
             this.dgvMensagens.SelectionChanged += new System.EventHandler(this.DgvMensagens_SelectionChanged);
+            this.dgvMensagens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvMensagens_MouseDoubleClick);
             // 
-            // toolStrip1
+            // bNavigator
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNovaMensagem,
-            this.tsbExcluiMensagem});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.bNavigator.AddNewItem = null;
+            this.bNavigator.CountItem = null;
+            this.bNavigator.DeleteItem = null;
+            this.bNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.TsbNovaMensagem,
+            this.TspEditarMensagem,
+            this.tsbExcluiMensagem,
+            this.bindingNavigatorSeparator2,
+            this.tsbPrimeiraPagina,
+            this.toolStripSeparator2,
+            this.tsbPaginaAnterior,
+            this.toolStripSeparator4,
+            this.tstPaginaAtual,
+            this.tslPaginaTotal,
+            this.toolStripSeparator3,
+            this.tsbProximaPagina,
+            this.bindingNavigatorSeparator,
+            this.tsbUltimaPagina,
+            this.toolStripSeparator1});
+            this.bNavigator.Location = new System.Drawing.Point(0, 0);
+            this.bNavigator.MoveFirstItem = null;
+            this.bNavigator.MoveLastItem = null;
+            this.bNavigator.MoveNextItem = null;
+            this.bNavigator.MovePreviousItem = null;
+            this.bNavigator.Name = "bNavigator";
+            this.bNavigator.PositionItem = null;
+            this.bNavigator.Size = new System.Drawing.Size(800, 25);
+            this.bNavigator.TabIndex = 2;
+            this.bNavigator.Text = "bindingNavigator1";
             // 
-            // tsbNovaMensagem
+            // TsbNovaMensagem
             // 
-            this.tsbNovaMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbNovaMensagem.Image = ((System.Drawing.Image)(resources.GetObject("tsbNovaMensagem.Image")));
-            this.tsbNovaMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNovaMensagem.Name = "tsbNovaMensagem";
-            this.tsbNovaMensagem.Size = new System.Drawing.Size(101, 22);
-            this.tsbNovaMensagem.Text = "Nova Mensagem";
-            this.tsbNovaMensagem.Click += new System.EventHandler(this.TsbNovaMensagem_Click);
+            this.TsbNovaMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TsbNovaMensagem.Image = ((System.Drawing.Image)(resources.GetObject("TsbNovaMensagem.Image")));
+            this.TsbNovaMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TsbNovaMensagem.Name = "TsbNovaMensagem";
+            this.TsbNovaMensagem.Size = new System.Drawing.Size(101, 22);
+            this.TsbNovaMensagem.Text = "Nova Mensagem";
+            this.TsbNovaMensagem.Click += new System.EventHandler(this.TsbNovaMensagem_Click);
+            // 
+            // TspEditarMensagem
+            // 
+            this.TspEditarMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.TspEditarMensagem.Image = ((System.Drawing.Image)(resources.GetObject("TspEditarMensagem.Image")));
+            this.TspEditarMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.TspEditarMensagem.Name = "TspEditarMensagem";
+            this.TspEditarMensagem.Size = new System.Drawing.Size(103, 22);
+            this.TspEditarMensagem.Text = "Editar Mensagem";
+            this.TspEditarMensagem.Click += new System.EventHandler(this.TspEditarMensagem_Click);
             // 
             // tsbExcluiMensagem
             // 
@@ -113,120 +148,92 @@
             this.tsbExcluiMensagem.Text = "Excluir Mensagem";
             this.tsbExcluiMensagem.Click += new System.EventHandler(this.TsbExcluiMensagem_Click);
             // 
-            // bNavigator
+            // bindingNavigatorSeparator2
             // 
-            this.bNavigator.AddNewItem = this.bindingNavigatorAddNewItem;
-            this.bNavigator.CountItem = this.bindingNavigatorCountItem;
-            this.bNavigator.DeleteItem = this.bindingNavigatorDeleteItem;
-            this.bNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.bindingNavigatorMoveFirstItem,
-            this.bindingNavigatorMovePreviousItem,
-            this.bindingNavigatorSeparator,
-            this.bindingNavigatorPositionItem,
-            this.bindingNavigatorCountItem,
-            this.bindingNavigatorSeparator1,
-            this.bindingNavigatorMoveNextItem,
-            this.bindingNavigatorMoveLastItem,
-            this.bindingNavigatorSeparator2,
-            this.bindingNavigatorAddNewItem,
-            this.bindingNavigatorDeleteItem});
-            this.bNavigator.Location = new System.Drawing.Point(0, 25);
-            this.bNavigator.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
-            this.bNavigator.MoveLastItem = this.bindingNavigatorMoveLastItem;
-            this.bNavigator.MoveNextItem = this.bindingNavigatorMoveNextItem;
-            this.bNavigator.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
-            this.bNavigator.Name = "bNavigator";
-            this.bNavigator.PositionItem = this.bindingNavigatorPositionItem;
-            this.bNavigator.Size = new System.Drawing.Size(800, 25);
-            this.bNavigator.TabIndex = 2;
-            this.bNavigator.Text = "bindingNavigator1";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
+            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // bindingNavigatorMoveFirstItem
+            // tsbPrimeiraPagina
             // 
-            this.bindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveFirstItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveFirstItem.Image")));
-            this.bindingNavigatorMoveFirstItem.Name = "bindingNavigatorMoveFirstItem";
-            this.bindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveFirstItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveFirstItem.Text = "Move first";
+            this.tsbPrimeiraPagina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPrimeiraPagina.Image = ((System.Drawing.Image)(resources.GetObject("tsbPrimeiraPagina.Image")));
+            this.tsbPrimeiraPagina.Name = "tsbPrimeiraPagina";
+            this.tsbPrimeiraPagina.RightToLeftAutoMirrorImage = true;
+            this.tsbPrimeiraPagina.Size = new System.Drawing.Size(23, 22);
+            this.tsbPrimeiraPagina.Text = "Move first";
+            this.tsbPrimeiraPagina.Click += new System.EventHandler(this.TsbPrimeiraPagina_Click);
             // 
-            // bindingNavigatorMovePreviousItem
+            // toolStripSeparator2
             // 
-            this.bindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMovePreviousItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMovePreviousItem.Image")));
-            this.bindingNavigatorMovePreviousItem.Name = "bindingNavigatorMovePreviousItem";
-            this.bindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMovePreviousItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMovePreviousItem.Text = "Move previous";
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbPaginaAnterior
+            // 
+            this.tsbPaginaAnterior.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPaginaAnterior.Image = ((System.Drawing.Image)(resources.GetObject("tsbPaginaAnterior.Image")));
+            this.tsbPaginaAnterior.Name = "tsbPaginaAnterior";
+            this.tsbPaginaAnterior.RightToLeftAutoMirrorImage = true;
+            this.tsbPaginaAnterior.Size = new System.Drawing.Size(23, 22);
+            this.tsbPaginaAnterior.Text = "Move previous";
+            this.tsbPaginaAnterior.Click += new System.EventHandler(this.TsbPaginaAnterior_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tstPaginaAtual
+            // 
+            this.tstPaginaAtual.AccessibleName = "Position";
+            this.tstPaginaAtual.AutoSize = false;
+            this.tstPaginaAtual.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tstPaginaAtual.Name = "tstPaginaAtual";
+            this.tstPaginaAtual.Size = new System.Drawing.Size(50, 23);
+            this.tstPaginaAtual.Text = "1";
+            this.tstPaginaAtual.ToolTipText = "Atual";
+            // 
+            // tslPaginaTotal
+            // 
+            this.tslPaginaTotal.Name = "tslPaginaTotal";
+            this.tslPaginaTotal.Size = new System.Drawing.Size(37, 22);
+            this.tslPaginaTotal.Text = "de {0}";
+            this.tslPaginaTotal.ToolTipText = "Total number of items";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbProximaPagina
+            // 
+            this.tsbProximaPagina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProximaPagina.Image = ((System.Drawing.Image)(resources.GetObject("tsbProximaPagina.Image")));
+            this.tsbProximaPagina.Name = "tsbProximaPagina";
+            this.tsbProximaPagina.RightToLeftAutoMirrorImage = true;
+            this.tsbProximaPagina.Size = new System.Drawing.Size(23, 22);
+            this.tsbProximaPagina.Text = "Move next";
+            this.tsbProximaPagina.Click += new System.EventHandler(this.TsbProximaPagina_Click);
             // 
             // bindingNavigatorSeparator
             // 
             this.bindingNavigatorSeparator.Name = "bindingNavigatorSeparator";
             this.bindingNavigatorSeparator.Size = new System.Drawing.Size(6, 25);
             // 
-            // bindingNavigatorPositionItem
+            // tsbUltimaPagina
             // 
-            this.bindingNavigatorPositionItem.AccessibleName = "Position";
-            this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
-            this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
-            this.bindingNavigatorPositionItem.Text = "0";
-            this.bindingNavigatorPositionItem.ToolTipText = "Current position";
+            this.tsbUltimaPagina.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbUltimaPagina.Image = ((System.Drawing.Image)(resources.GetObject("tsbUltimaPagina.Image")));
+            this.tsbUltimaPagina.Name = "tsbUltimaPagina";
+            this.tsbUltimaPagina.RightToLeftAutoMirrorImage = true;
+            this.tsbUltimaPagina.Size = new System.Drawing.Size(23, 22);
+            this.tsbUltimaPagina.Text = "Move last";
+            this.tsbUltimaPagina.Click += new System.EventHandler(this.TsbUltimaPagina_Click);
             // 
-            // bindingNavigatorCountItem
+            // toolStripSeparator1
             // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
-            // bindingNavigatorSeparator1
-            // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorMoveNextItem
-            // 
-            this.bindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveNextItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveNextItem.Image")));
-            this.bindingNavigatorMoveNextItem.Name = "bindingNavigatorMoveNextItem";
-            this.bindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveNextItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveNextItem.Text = "Move next";
-            this.bindingNavigatorMoveNextItem.Click += new System.EventHandler(this.BindingNavigatorMoveNextItem_Click);
-            // 
-            // bindingNavigatorMoveLastItem
-            // 
-            this.bindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorMoveLastItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorMoveLastItem.Image")));
-            this.bindingNavigatorMoveLastItem.Name = "bindingNavigatorMoveLastItem";
-            this.bindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorMoveLastItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorMoveLastItem.Text = "Move last";
-            // 
-            // bindingNavigatorSeparator2
-            // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
-            this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // bindingNavigatorAddNewItem
-            // 
-            this.bindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorAddNewItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorAddNewItem.Image")));
-            this.bindingNavigatorAddNewItem.Name = "bindingNavigatorAddNewItem";
-            this.bindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorAddNewItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorAddNewItem.Text = "Add new";
-            // 
-            // bindingNavigatorDeleteItem
-            // 
-            this.bindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.bindingNavigatorDeleteItem.Image = ((System.Drawing.Image)(resources.GetObject("bindingNavigatorDeleteItem.Image")));
-            this.bindingNavigatorDeleteItem.Name = "bindingNavigatorDeleteItem";
-            this.bindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = true;
-            this.bindingNavigatorDeleteItem.Size = new System.Drawing.Size(23, 22);
-            this.bindingNavigatorDeleteItem.Text = "Delete";
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // MensagemLista
             // 
@@ -234,14 +241,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.bNavigator);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.dgvMensagens);
             this.Name = "MensagemLista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mensagens";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvMensagens)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bNavigator)).EndInit();
             this.bNavigator.ResumeLayout(false);
             this.bNavigator.PerformLayout();
@@ -256,21 +261,22 @@
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
         private System.Windows.Forms.DataGridView dgvMensagens;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbNovaMensagem;
-        private System.Windows.Forms.ToolStripButton tsbExcluiMensagem;
         private System.Windows.Forms.BindingNavigator bNavigator;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorAddNewItem;
-        private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorDeleteItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
-        private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
-        private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.BindingSource bSource;
+        private System.Windows.Forms.ToolStripButton TsbNovaMensagem;
+        private System.Windows.Forms.ToolStripButton TspEditarMensagem;
+        private System.Windows.Forms.ToolStripButton tsbExcluiMensagem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbPrimeiraPagina;
+        private System.Windows.Forms.ToolStripButton tsbPaginaAnterior;
+        private System.Windows.Forms.ToolStripTextBox tstPaginaAtual;
+        private System.Windows.Forms.ToolStripLabel tslPaginaTotal;
+        private System.Windows.Forms.ToolStripButton tsbProximaPagina;
+        private System.Windows.Forms.ToolStripButton tsbUltimaPagina;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
