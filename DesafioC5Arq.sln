@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioC5Arq", "DesafioC5Arq.csproj", "{2093BAE1-9E21-42EE-B354-1EEEC0086E0E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2093BAE1-9E21-42EE-B354-1EEEC0086E0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2093BAE1-9E21-42EE-B354-1EEEC0086E0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2093BAE1-9E21-42EE-B354-1EEEC0086E0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2093BAE1-9E21-42EE-B354-1EEEC0086E0E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38183E83-BABD-4343-85EE-01320690C762}
+	EndGlobalSection
+EndGlobal
