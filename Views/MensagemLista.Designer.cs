@@ -49,6 +49,9 @@
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.tsbUltimaPagina = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tstItensPagina = new System.Windows.Forms.ToolStripTextBox();
+            this.tslItensPagina = new System.Windows.Forms.ToolStripLabel();
+            this.tsbReload = new System.Windows.Forms.ToolStripButton();
             this.bSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMensagens)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bNavigator)).BeginInit();
@@ -81,7 +84,7 @@
             this.dgvMensagens.Name = "dgvMensagens";
             this.dgvMensagens.ReadOnly = true;
             this.dgvMensagens.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMensagens.Size = new System.Drawing.Size(800, 420);
+            this.dgvMensagens.Size = new System.Drawing.Size(1138, 420);
             this.dgvMensagens.TabIndex = 0;
             this.dgvMensagens.SelectionChanged += new System.EventHandler(this.DgvMensagens_SelectionChanged);
             this.dgvMensagens.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.DgvMensagens_MouseDoubleClick);
@@ -106,7 +109,10 @@
             this.tsbProximaPagina,
             this.bindingNavigatorSeparator,
             this.tsbUltimaPagina,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.tsbReload,
+            this.tstItensPagina,
+            this.tslItensPagina});
             this.bNavigator.Location = new System.Drawing.Point(0, 0);
             this.bNavigator.MoveFirstItem = null;
             this.bNavigator.MoveLastItem = null;
@@ -114,7 +120,7 @@
             this.bNavigator.MovePreviousItem = null;
             this.bNavigator.Name = "bNavigator";
             this.bNavigator.PositionItem = null;
-            this.bNavigator.Size = new System.Drawing.Size(800, 25);
+            this.bNavigator.Size = new System.Drawing.Size(1138, 25);
             this.bNavigator.TabIndex = 2;
             this.bNavigator.Text = "bindingNavigator1";
             // 
@@ -235,11 +241,40 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
+            // tstItensPagina
+            // 
+            this.tstItensPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tstItensPagina.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.tstItensPagina.Name = "tstItensPagina";
+            this.tstItensPagina.Size = new System.Drawing.Size(35, 25);
+            this.tstItensPagina.Text = "25";
+            this.tstItensPagina.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tstItensPagina.Leave += new System.EventHandler(this.TstItensPagina_Leave);
+            this.tstItensPagina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TstItensPagina_KeyPress);
+            // 
+            // tslItensPagina
+            // 
+            this.tslItensPagina.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslItensPagina.Name = "tslItensPagina";
+            this.tslItensPagina.Size = new System.Drawing.Size(73, 22);
+            this.tslItensPagina.Text = "Itens p/ Pag:";
+            // 
+            // tsbReload
+            // 
+            this.tsbReload.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbReload.Image = ((System.Drawing.Image)(resources.GetObject("tsbReload.Image")));
+            this.tsbReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbReload.Name = "tsbReload";
+            this.tsbReload.Size = new System.Drawing.Size(67, 22);
+            this.tsbReload.Text = "Recarregar";
+            this.tsbReload.Click += new System.EventHandler(this.TsbReload_Click);
+            // 
             // MensagemLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1138, 450);
             this.Controls.Add(this.bNavigator);
             this.Controls.Add(this.dgvMensagens);
             this.Name = "MensagemLista";
@@ -278,5 +313,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripLabel tslItensPagina;
+        private System.Windows.Forms.ToolStripTextBox tstItensPagina;
+        private System.Windows.Forms.ToolStripButton tsbReload;
     }
 }

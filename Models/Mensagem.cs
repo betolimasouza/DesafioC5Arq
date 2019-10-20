@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DesafioC5Arq.Models
 {
-    public class Mensagem //: IValidatableObject
+    public class Mensagem 
     {
         [Required(AllowEmptyStrings = false, ErrorMessage = "Preencha o código da aplicação!")]
         [DisplayName("Cod Aplicação")]
@@ -67,17 +67,16 @@ namespace DesafioC5Arq.Models
             return this;
         }
 
-        //public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        //{
-        //    var results = new List<ValidationResult>();
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            var results = new List<ValidationResult>();
 
-        //    if (DataInicial < DateTime.Today) results.Add(new ValidationResult("Data inicial não pode ser anterior a data atual!"));
-        //    if (DataFinal < DataInicial) results.Add(new ValidationResult("Data final não pode ser anterior a data inicial!"));
+            if (DataInicial < DateTime.Today) results.Add(new ValidationResult("Data inicial não pode ser anterior a data atual!"));
+            if (DataFinal < DataInicial) results.Add(new ValidationResult("Data final não pode ser anterior a data inicial!"));
+            Validator.TryValidateObject(this, validationContext, results, true);
 
-        //    Validator.TryValidateObject(this, validationContext, results, true);
-
-        //    return results;
-        //}
+            return results;
+        }
 
         
     }

@@ -12,7 +12,7 @@ namespace DesafioC5Arq.Models
     {
         //BindingList pra uso com o DataViewGrid da listagem principal (INotifyPropertyChanged)
         public BindingList<Mensagem> msgs = new BindingList<Mensagem>();
-
+        
         public BindingList<Mensagem> Conectar(int NroItens)
         {
             if (NroItens > 0)

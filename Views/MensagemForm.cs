@@ -15,8 +15,8 @@ namespace DesafioC5Arq.Views
 {
     public partial class MensagemForm : Form, IViewPadrao
     {
-        MensagemController _msgController;
-        TipoProcesso _tipoProcesso;
+        MensagemController msgController;
+        TipoProcesso tipoProcesso;
 
         public MensagemForm()
         {
@@ -27,16 +27,17 @@ namespace DesafioC5Arq.Views
 
         public void SetController(IControllerPadrao controller)
         {
-            _msgController = (MensagemController)controller;
+            msgController = (MensagemController)controller;
         }
 
         public void SetDataBinding(IBindingList mensagens)
         {
-            if (_tipoProcesso == TipoProcesso.Editar)
+            if (tipoProcesso == TipoProcesso.Editar)
             {
                 //Seta o binding source para a coleção completa, para uso com o Navigator
                 bsForm.DataSource = mensagens;
-                bsForm.Position = _msgController.IndexMsgSelecionada();
+                bsForm.Position = msgController.IndexMsgSelecionada();
+              
                 //Seta o navigator
                 bnForm.BindingSource = bsForm;
             }
@@ -47,18 +48,20 @@ namespace DesafioC5Arq.Views
 
 
             //Seta os bindings do formulário
-            txtCodAplicacao.DataBindings.Add(new Binding("Text", bsForm, "CodAplicacao"));
-            txtTextoMensagem.DataBindings.Add(new Binding("Text", bsForm, "TextoMensagem"));
-            dtpDataInicial.DataBindings.Add(new Binding("Value", bsForm, "DataInicial"));
-            dtpDataFinal.DataBindings.Add(new Binding("Value", bsForm, "DataFinal"));
-            dtpDataInclusao.DataBindings.Add(new Binding("Value", bsForm, "DataInclusao"));
-            txtUsuarioInclusao.DataBindings.Add(new Binding("Text", bsForm, "UsuarioInclusao"));
-            chbStatus.DataBindings.Add(new Binding("Checked", bsForm, "Status"));
+            txtCodAplicacao.DataBindings.Add(new Binding("Text", bsForm, "CodAplicacao", false, DataSourceUpdateMode.OnPropertyChanged));
+            txtTextoMensagem.DataBindings.Add(new Binding("Text", bsForm, "TextoMensagem", false, DataSourceUpdateMode.OnPropertyChanged));
+            dtpDataInicial.DataBindings.Add(new Binding("Value", bsForm, "DataInicial", false, DataSourceUpdateMode.OnPropertyChanged));
+            dtpDataFinal.DataBindings.Add(new Binding("Value", bsForm, "DataFinal", false, DataSourceUpdateMode.OnPropertyChanged));
+            dtpDataInclusao.DataBindings.Add(new Binding("Value", bsForm, "DataInclusao", false, DataSourceUpdateMode.OnPropertyChanged));
+            txtUsuarioInclusao.DataBindings.Add(new Binding("Text", bsForm, "UsuarioInclusao", false, DataSourceUpdateMode.OnPropertyChanged));
+            chbStatus.DataBindings.Add(new Binding("Checked", bsForm, "Status", false, DataSourceUpdateMode.OnPropertyChanged));
+
+            
         }
 
         public void ShowView(IBindingList mensagens, TipoProcesso tipoProcesso)
         {
-            _tipoProcesso = tipoProcesso;
+            this.tipoProcesso = tipoProcesso;
             SetDataBinding(mensagens);
             ShowDialog();
         }
@@ -66,18 +69,13 @@ namespace DesafioC5Arq.Views
         #endregion
 
         #region Eventos Controles
-        private void TsbCancelar_Click(object sender, EventArgs e)
-        {
-            bsForm.CancelEdit();
-            Close();
-        }
-
+       
         private void TsbSalvarMensagem_Click(object sender, EventArgs e)
         {
-            if (_msgController.ValidaMensagem((Mensagem)bsForm.Current))
+            if (msgController.ValidaMensagem((Mensagem)bsForm.Current))
             {
-                if (_tipoProcesso == TipoProcesso.Inserir)
-                    _msgController.InserirMensagem((Mensagem)bsForm.Current);
+                if (tipoProcesso == TipoProcesso.Inserir)
+                    msgController.InserirMensagem((Mensagem)bsForm.Current);
 
                 bsForm.EndEdit();
                 Close();

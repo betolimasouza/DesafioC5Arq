@@ -16,13 +16,13 @@ namespace DesafioC5Arq.Controllers
     public class MensagemController : IControllerPadrao
     {
         
-        BindingList<Mensagem> _mensagens;
-        Mensagem _msgSelecionada;
+        BindingList<Mensagem> mensagens;
+        Mensagem msgSelecionada;
 
         public MensagemController()
         {
             BindingList<Mensagem> msgs = new DataAccess().Conectar(100);
-            _mensagens = msgs;
+            mensagens = msgs;
         }
 
         #region Load
@@ -30,7 +30,7 @@ namespace DesafioC5Arq.Controllers
         public void LoadView(IViewPadrao view, TipoProcesso tipoProcesso)
         {
             view.SetController(this);
-            view.ShowView(_mensagens, tipoProcesso);
+            view.ShowView(mensagens, tipoProcesso);
         }
 
         public void LoadLista()
@@ -47,7 +47,7 @@ namespace DesafioC5Arq.Controllers
 
         public void RefreshView(IViewPadrao view)
         {
-            view.SetDataBinding(_mensagens);
+            view.SetDataBinding(mensagens);
         }
 
         #endregion
@@ -58,12 +58,12 @@ namespace DesafioC5Arq.Controllers
 
         public void SelecionaMensagem(Mensagem selMsg)
         {
-            _msgSelecionada = selMsg;
+            msgSelecionada = selMsg;
         }
 
         public int IndexMsgSelecionada()
         {
-            return _mensagens.IndexOf(_msgSelecionada);
+            return mensagens.IndexOf(msgSelecionada);
         }
 
         #endregion
@@ -76,7 +76,7 @@ namespace DesafioC5Arq.Controllers
 
         internal void InserirMensagem(Mensagem msg)
         {
-            _mensagens.Add(msg);
+            mensagens.Add(msg);
         }
 
         #endregion
@@ -88,28 +88,26 @@ namespace DesafioC5Arq.Controllers
 
         internal void ExcluiMensagem()
         {
-            if (_msgSelecionada != null)
+            if (msgSelecionada != null)
             {
                 DialogResult result = MessageBox.Show("Deseja excluir a mensagem selecionada?", "Exclusão", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.No) return;
 
-                _mensagens.Remove(_msgSelecionada);
+                mensagens.Remove(msgSelecionada);
             }
         }
 
         internal bool ValidaMensagem(Mensagem msg)
         {
 
+            var erros = msg.Validate(new ValidationContext(msg));
+            if (erros.Any())
+            {
+                MessageBox.Show(string.Join("\n", erros.Select(a => a.ErrorMessage)));
+                return false;
+            }
+
             return true;
-
-            //var erros = msg.Validate(new ValidationContext(msg));
-            //if (erros.Any())
-            //{
-            //    MessageBox.Show(string.Join("\n", erros.Select(a => a.ErrorMessage)));
-            //    return false;
-            //}
-
-            //return true;
         }
 
         #endregion

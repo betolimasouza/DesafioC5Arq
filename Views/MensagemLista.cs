@@ -19,9 +19,9 @@ namespace DesafioC5Arq.Views
 
         MensagemController msgController;
 
-        int vnItensPagina = 25;
-        int vnPaginaAtual = 1;
-        int vnTotalPaginas;
+        int itensPagina = 25;
+        int paginaAtual = 1;
+        int totalPaginas;
 
         public MensagemLista()
         {
@@ -36,11 +36,13 @@ namespace DesafioC5Arq.Views
 
         public void SetDataBinding(IBindingList mensagens)
         {
-            bSource.DataSource = ((BindingList<Mensagem>)mensagens).Skip(vnItensPagina * (vnPaginaAtual - 1) ).Take(vnItensPagina);
-            
+            int.TryParse(tstItensPagina.Text, out itensPagina);
+
+            bSource.DataSource = ((BindingList<Mensagem>)mensagens).Skip(itensPagina * (paginaAtual - 1)).Take(itensPagina);
+
             //Calcula numero total de páginas
-            vnTotalPaginas = (int)Math.Ceiling((double)(mensagens.Count / vnItensPagina));
-            tslPaginaTotal.Text = "de " + vnTotalPaginas;
+            totalPaginas = ((mensagens.Count - 1) / itensPagina + 1);
+            tslPaginaTotal.Text = "de " + totalPaginas;
 
             dgvMensagens.DataSource =  bSource;
         }
@@ -58,6 +60,7 @@ namespace DesafioC5Arq.Views
         private void TsbNovaMensagem_Click(object sender, EventArgs e)
         {
             msgController.NovaMensagem();
+            msgController.RefreshView(this);
         }
 
         private void DgvMensagens_SelectionChanged(object sender, EventArgs e)
@@ -96,7 +99,7 @@ namespace DesafioC5Arq.Views
 
         private void Paginar(int pagina)
         {
-            vnPaginaAtual = pagina;
+            paginaAtual = pagina;
             tstPaginaAtual.Text = pagina.ToString();
             msgController.RefreshView(this);
         }
@@ -109,19 +112,42 @@ namespace DesafioC5Arq.Views
 
         private void TsbPaginaAnterior_Click(object sender, EventArgs e)
         {
-            if (vnPaginaAtual > 0) Paginar(vnPaginaAtual - 1);
+            if (paginaAtual > 0) Paginar(paginaAtual - 1);
         }
 
         private void TsbProximaPagina_Click(object sender, EventArgs e)
         {
-            if (vnPaginaAtual  < vnTotalPaginas) Paginar(vnPaginaAtual + 1);
+            if (paginaAtual  < totalPaginas) Paginar(paginaAtual + 1);
         }
 
         private void TsbUltimaPagina_Click(object sender, EventArgs e)
         {
-            Paginar(vnTotalPaginas);
+            Paginar(totalPaginas);
+        }
+
+        private void TstItensPagina_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void TsbReload_Click(object sender, EventArgs e)
+        {
+            Paginar(1);
+        }
+
+        private void TstItensPagina_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(tstItensPagina.Text)) tstItensPagina.Text = "25";
         }
 
         #endregion
+
+        private void TsbBuscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,17 +46,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.bsForm = new System.Windows.Forms.BindingSource(this.components);
             this.bnForm = new System.Windows.Forms.BindingNavigator(this.components);
+            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
+            this.tsbSalvarMensagem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorPositionItem = new System.Windows.Forms.ToolStripTextBox();
-            this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
             this.bindingNavigatorSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.bindingNavigatorMoveNextItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbCancelar = new System.Windows.Forms.ToolStripButton();
-            this.tsbSalvarMensagem = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.bsForm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bnForm)).BeginInit();
             this.bnForm.SuspendLayout();
@@ -196,7 +195,6 @@
             this.bnForm.DeleteItem = null;
             this.bnForm.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbSalvarMensagem,
-            this.tsbCancelar,
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
             this.bindingNavigatorSeparator,
@@ -216,6 +214,23 @@
             this.bnForm.Size = new System.Drawing.Size(362, 25);
             this.bnForm.TabIndex = 15;
             this.bnForm.Text = "bindingNavigator1";
+            // 
+            // bindingNavigatorCountItem
+            // 
+            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
+            this.bindingNavigatorCountItem.Text = "of {0}";
+            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
+            // 
+            // tsbSalvarMensagem
+            // 
+            this.tsbSalvarMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbSalvarMensagem.Image = ((System.Drawing.Image)(resources.GetObject("tsbSalvarMensagem.Image")));
+            this.tsbSalvarMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbSalvarMensagem.Name = "tsbSalvarMensagem";
+            this.tsbSalvarMensagem.Size = new System.Drawing.Size(42, 22);
+            this.tsbSalvarMensagem.Text = "Salvar";
+            this.tsbSalvarMensagem.Click += new System.EventHandler(this.TsbSalvarMensagem_Click);
             // 
             // bindingNavigatorMoveFirstItem
             // 
@@ -244,22 +259,14 @@
             // 
             this.bindingNavigatorPositionItem.AccessibleName = "Position";
             this.bindingNavigatorPositionItem.AutoSize = false;
-            this.bindingNavigatorPositionItem.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.bindingNavigatorPositionItem.Name = "bindingNavigatorPositionItem";
             this.bindingNavigatorPositionItem.Size = new System.Drawing.Size(50, 23);
             this.bindingNavigatorPositionItem.Text = "0";
             this.bindingNavigatorPositionItem.ToolTipText = "Current position";
             // 
-            // bindingNavigatorCountItem
-            // 
-            this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(35, 22);
-            this.bindingNavigatorCountItem.Text = "of {0}";
-            this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
-            // 
             // bindingNavigatorSeparator1
             // 
-            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator1.Name = "bindingNavigatorSeparator1";
             this.bindingNavigatorSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // bindingNavigatorMoveNextItem
@@ -282,28 +289,8 @@
             // 
             // bindingNavigatorSeparator2
             // 
-            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator";
+            this.bindingNavigatorSeparator2.Name = "bindingNavigatorSeparator2";
             this.bindingNavigatorSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbCancelar
-            // 
-            this.tsbCancelar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbCancelar.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancelar.Image")));
-            this.tsbCancelar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelar.Name = "tsbCancelar";
-            this.tsbCancelar.Size = new System.Drawing.Size(57, 22);
-            this.tsbCancelar.Text = "Cancelar";
-            this.tsbCancelar.Click += new System.EventHandler(this.TsbCancelar_Click);
-            // 
-            // tsbSalvarMensagem
-            // 
-            this.tsbSalvarMensagem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbSalvarMensagem.Image = ((System.Drawing.Image)(resources.GetObject("tsbSalvarMensagem.Image")));
-            this.tsbSalvarMensagem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSalvarMensagem.Name = "tsbSalvarMensagem";
-            this.tsbSalvarMensagem.Size = new System.Drawing.Size(42, 22);
-            this.tsbSalvarMensagem.Text = "Salvar";
-            this.tsbSalvarMensagem.Click += new System.EventHandler(this.TsbSalvarMensagem_Click);
             // 
             // MensagemForm
             // 
@@ -356,7 +343,6 @@
         private System.Windows.Forms.BindingNavigator bnForm;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
         private System.Windows.Forms.ToolStripButton tsbSalvarMensagem;
-        private System.Windows.Forms.ToolStripButton tsbCancelar;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
         private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
